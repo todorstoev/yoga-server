@@ -34,5 +34,9 @@
   },
   "keywords": [],
   "name": "publishr",
-  "description": "Created from zeit/next.js: custom-server-typescript"
+  "description": "Created from zeit/next.js: custom-server-typescript",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  }
 }
