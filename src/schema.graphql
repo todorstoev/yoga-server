@@ -1,0 +1,89 @@
+scalar DateTime
+
+type Query {
+	allCampaigns: [Campaign!]!
+	allSparks: [Spark!]!
+}
+
+type Mutation {
+	signup(data: UserCreateInput!): AuthPayload
+	login(data: UserLoginInput!): AuthPayload
+	verifyToken(data: VerifyTokenInput!): VerifyTokenPayload
+}
+
+type User {
+	id: ID!
+	firstName: String!
+	secondName: String!
+	username: String!
+	email: String!
+	password: String!
+	sparks: [Spark!]!
+	campaigns: [Campaign!]!
+	likes: [Like!]!
+	dislikes: [Dislike!]!
+}
+
+type Spark {
+	id: ID!
+	description: String!
+	body: String!
+	url: String!
+	postedBy: User!
+	campaign: Campaign
+	likes: [Like!]!
+	dislikes: [Dislike!]!
+}
+
+type Campaign {
+	id: ID!
+	description: String!
+	url: String!
+	postedBy: User!
+	sparks: [Spark!]!
+	likes: [Like!]!
+	dislikes: [Dislike!]!
+}
+
+type Like {
+	id: ID!
+	spark: Spark
+	user: User!
+	campaign: Campaign
+}
+
+type Dislike {
+	id: ID!
+	spark: Spark
+	user: User!
+	campaign: Campaign
+}
+
+type AuthPayload {
+	token: String
+	user: User
+	tokenExpiration: DateTime!
+}
+
+type VerifyTokenPayload {
+	valid: Boolean!
+}
+
+# Inputs
+
+input UserCreateInput {
+	firstName: String!
+	secondName: String!
+	username: String!
+	email: String!
+	password: String!
+}
+
+input UserLoginInput {
+	email: String!
+	password: String!
+}
+
+input VerifyTokenInput {
+	token: String!
+}

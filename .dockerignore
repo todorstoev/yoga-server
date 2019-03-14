@@ -1,0 +1,9 @@
+.git
+frontend/node_modules
+frontend/build
+frontend/.history
+
+server/node_modules
+server/build
+server/.history
+server/.idea

@@ -1,0 +1,50 @@
+type User {
+  id: ID! @unique
+  firstName: String!
+  secondName: String!
+  username: String! @unique
+  email: String! @unique
+  password: String!
+  sparks: [Spark!]! @relation(name: "AllSparks")
+  campaigns: [Campaign!]! @relation(name:"AllCampaigns")
+  likes: [Like!]! @relation(name: "AllLikesUser")
+  dislikes: [Dislike!]! @relation(name: "AllDislikesUser")
+}
+
+type Spark {
+  id: ID! @unique
+  createdAt: DateTime!
+  description: String!
+  body: String!
+  url: String!
+  postedBy: User! @relation(name: "AllSparks")
+  campaign: Campaign @relation(name:"AllSparksCampaing")
+  likes: [Like!]! @relation(name: "AllLikesSpark")
+  dislikes: [Dislike!]! @relation(name: "AllDislikesSpark")
+}
+
+type Campaign {
+  id: ID! @unique
+  createdAt: DateTime!
+  description: String!
+  url: String!
+  postedBy: User!@relation(name:"AllCampaigns")
+  sparks: [Spark!]! @relation(name:"AllSparksCampaing")
+  likes: [Like!]! @relation(name: "AllLikesCampaing")
+  dislikes: [Dislike!]! @relation(name: "AllDislikesCampaign")
+}
+
+
+type Like {
+  id: ID! @unique
+  spark: Spark @relation(name: "AllLikesSpark")
+  user: User! @relation(name: "AllLikesUser")
+  campaign: Campaign @relation(name:"AllLikesCampaing")
+}
+
+type Dislike {
+  id: ID! @unique
+  spark: Spark @relation(name: "AllDislikesSpark")
+  user: User! @relation(name: "AllDislikesUser")
+  campaign: Campaign @relation(name:"AllDislikesCampaign")
+}
