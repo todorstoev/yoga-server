@@ -14,7 +14,7 @@ import Like from './resolvers/Like'
 import Spark from './resolvers/Spark'
 import User from './resolvers/User'
 
-const port = parseInt(process.env.PORT, 10) || 8000
+const port = process.env.PORT || 8000
 // const dev = process.env.NODE_ENV !== 'production'
 
 const graphqlEndpoint = '/graphql'
