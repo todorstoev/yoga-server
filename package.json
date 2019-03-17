@@ -32,10 +32,11 @@
 		"typescript": "^3.3.3333"
 	},
 	"keywords": [],
-	"name": "publishr",
+  "name": "publishr",
+  "main": "/src/index.ts",
 	"description": "Created from zeit/next.js: custom-server-typescript",
 	"engines": {
-		"node": ">=10.0.0",
+		"node": ">=8.0.0",
 		"npm": ">=6.0.0"
 	}
 }
